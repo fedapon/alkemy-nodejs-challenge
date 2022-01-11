@@ -1,15 +1,19 @@
-export function getCharacter (req, res) {
-    res.send('Hello')
+import charactersService from "../services/characters.service.js"
+
+const db = new charactersService()
+
+export async function getCharacter (req, res) {
+    res.json({message: await db.getCharacterById(req.query.id)})
 }
 
-export function createCharacter (req, res) {
-    res.send('Hello')    
+export async function createCharacter (req, res) {
+    res.json({message: await db.createCharacter(req.query.id)})   
 }
 
-export function editCharacter (req, res) {
-    res.send('Hello')    
+export async function editCharacter (req, res) {
+    res.json({message: await db.editCharacter(req.query.id)})   
 }
 
-export function deleteCharacter (req, res) {
-    res.send('Hello')   
+export async function deleteCharacter (req, res) {
+    res.json({message: await db.deleteCharacter(req.query.id)})   
 }
