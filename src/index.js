@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { Sequelize } from 'sequelize'
 import charactersRoute from './routes/characters.route.js'
 import moviesRoute from './routes/movies.route.js'
@@ -9,6 +10,11 @@ export const sequelize = new Sequelize({
     storage: '../persistence/database.sqlite',
     logging: console.log,                  // Default, displays the first parameter of the log function call
 })
+
+//middlewares
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', async (req, res) => {
     try {
