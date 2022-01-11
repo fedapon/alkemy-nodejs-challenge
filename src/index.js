@@ -3,6 +3,7 @@ import cors from 'cors'
 import db from './config/database.js'
 import Character from './models/character.model.js'
 import Movie from './models/movie.model.js'
+import Gender from './models/gender.model.js'
 import charactersRoute from './routes/characters.route.js'
 import moviesRoute from './routes/movies.route.js'
 
@@ -10,6 +11,8 @@ const app = express()
 
 Character.belongsToMany(Movie, {through: 'CharactersMovies'})
 Movie.belongsToMany(Character, {through: 'CharactersMovies'})
+Gender.hasMany(Movie)
+Movie.belongsTo(Gender)
 
 db.authenticate()
     .then(async ()=>{
