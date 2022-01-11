@@ -4,11 +4,11 @@ class charactersService {
     }
 
     async createCharacter (object) {
-        return {object}
+        return object
     }
 
-    async editCharacterById (id) {
-        return {id}
+    async editCharacterById (id, object) {
+        return object
     }
 
     async deleteCharacterById (id) {

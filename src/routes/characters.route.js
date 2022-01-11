@@ -8,12 +8,12 @@ import {
 
 const router = Router()
 
-router.get('/', getCharacter)
+router.get('/:id', getCharacter)
 
 router.post('/', createCharacter)
 
-router.patch('/', editCharacter)
+router.patch('/:id', editCharacter)
 
-router.delete('/', deleteCharacter)
+router.delete('/:id', deleteCharacter)
 
 export default router
