@@ -1,8 +1,13 @@
 import Character from '../models/character.model.js'
+import Movie from '../models/movie.model.js'
 
 class charactersService {
+    async getAllCharacters() {
+        return await Character.findAll({include: Movie})
+    }
+
     async getCharacterById(id) {
-        return await Character.findByPk(id)
+        return await Character.findByPk(id, {include: Movie})
     }
 
     async createCharacter(object) {

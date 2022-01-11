@@ -2,6 +2,10 @@ import charactersService from '../services/characters.service.js'
 
 const db = new charactersService()
 
+export async function getAllCharacters(req, res) {
+    res.json(await db.getAllCharacters())
+}
+
 export async function getCharacter(req, res) {
     res.json(await db.getCharacterById(req.params.id))
 }
