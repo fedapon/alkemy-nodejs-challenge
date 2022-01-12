@@ -5,7 +5,7 @@ class charactersService {
     async getAllCharacters(query) {
         return await Character.findAll({
             where: query,
-            attributes: ['picture', 'name']
+            attributes: ['id', 'picture', 'name']
         })
     }
 
