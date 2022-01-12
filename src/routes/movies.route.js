@@ -4,7 +4,7 @@ import {
     getMovie,
     createMovie,
     editMovie,
-    deleteMovie,
+    deleteMovie
 } from '../controllers/movies.controller.js'
 
 const router = Router()

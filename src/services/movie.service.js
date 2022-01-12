@@ -14,8 +14,7 @@ class moviesService {
         if (query.hasOwnProperty('order')) {
             if (query.order === 'DESC') {
                 titleOrder.push(['createdAt', 'DESC'])
-            }
-            else {
+            } else {
                 titleOrder.push(['createdAt', 'ASC'])
             }
         }

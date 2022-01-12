@@ -9,7 +9,7 @@ export async function authRegister(req, res) {
         const token = await generateToken({ user: req.body.user })
         return res.json({ token })
     } catch (error) {
-        return res.json({ error: error})
+        return res.json({ error: error })
     }
 }
 

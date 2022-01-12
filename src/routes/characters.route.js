@@ -4,7 +4,7 @@ import {
     getCharacter,
     createCharacter,
     editCharacter,
-    deleteCharacter,
+    deleteCharacter
 } from '../controllers/characters.controller.js'
 
 const router = Router()
