@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize'
 import db from '../config/database.js'
 
-const Gender = db.define(
-    'Gender',
+const Genre = db.define(
+    'Genre',
     {
         name: {
             type: DataTypes.STRING,
@@ -17,4 +17,4 @@ const Gender = db.define(
     }
 )
 
-export default Gender
+export default Genre

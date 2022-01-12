@@ -7,7 +7,7 @@ import moviesRoute from './routes/movies.route.js'
 
 const app = express()
 
-databaseConfiguration(db)
+databaseConfiguration(db, {mockdata: true})
 
 //middlewares
 app.use(cors())
