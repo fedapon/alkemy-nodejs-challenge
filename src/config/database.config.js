@@ -13,8 +13,8 @@ async function databaseConfiguration(db, options = {}) {
             as: 'characters',
             through: 'CharactersMovies'
         })
-        Genre.hasMany(Movie)
-        Movie.belongsTo(Genre)
+        Movie.belongsTo(Genre, { foreignKey: 'genre' })
+
         if (options.mockdata == true) {
             mockData(db)
         } else {

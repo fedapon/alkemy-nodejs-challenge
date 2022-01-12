@@ -1,6 +1,5 @@
 import Character from '../models/character.model.js'
 import Movie from '../models/movie.model.js'
-import Genre from '../models/genre.model.js'
 
 class moviesService {
     async getAllMovies(query) {
