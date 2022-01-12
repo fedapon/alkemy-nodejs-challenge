@@ -1,19 +1,22 @@
 import { Router } from 'express'
 import {
+    getAllMovies,
+    getMovie,
     createMovie,
-    deleteMovie,
     editMovie,
-    getMovie
+    deleteMovie,
 } from '../controllers/movies.controller.js'
 
 const router = Router()
 
-router.get('/', getMovie)
+router.get('/', getAllMovies)
+
+router.get('/:id', getMovie)
 
 router.post('/', createMovie)
 
-router.patch('/', editMovie)
+router.patch('/:id', editMovie)
 
-router.delete('/', deleteMovie)
+router.delete('/:id', deleteMovie)
 
 export default router
