@@ -3,7 +3,7 @@ import Movie from '../models/movie.model.js'
 
 class charactersService {
     async getAllCharacters() {
-        return await Character.findAll({include: Movie})
+        return await Character.findAll()
     }
 
     async getCharacterById(id) {
