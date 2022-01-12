@@ -1,5 +1,6 @@
 import Character from '../models/character.model.js'
 import Movie from '../models/movie.model.js'
+import Genre from '../models/genre.model.js'
 
 class moviesService {
     async getAllMovies(query) {
@@ -10,7 +11,15 @@ class moviesService {
     }
 
     async getMovieById(id) {
-        return await Movie.findByPk(id, {include: Character})
+        return await Movie.findByPk(id, {
+            include: {
+                model: Character,
+                as: 'characters',
+                through: {
+                    attributes: []
+                }
+            }
+        })
     }
 
     async createMovie(object) {

@@ -2,16 +2,22 @@ import Character from '../models/character.model.js'
 import Movie from '../models/movie.model.js'
 import Genre from '../models/genre.model.js'
 
-async function databaseConfiguration(db, options={}) {
+async function databaseConfiguration(db, options = {}) {
     try {
         await db.authenticate()
-        Character.belongsToMany(Movie, { through: 'CharactersMovies' })
-        Movie.belongsToMany(Character, { through: 'CharactersMovies' })
+        Character.belongsToMany(Movie, {
+            as: 'movies',
+            through: 'CharactersMovies'
+        })
+        Movie.belongsToMany(Character, {
+            as: 'characters',
+            through: 'CharactersMovies'
+        })
         Genre.hasMany(Movie)
         Movie.belongsTo(Genre)
         if (options.mockdata == true) {
-          mockData(db)
-        } else{
+            mockData(db)
+        } else {
             db.sync()
         }
         console.log('Database connected...')

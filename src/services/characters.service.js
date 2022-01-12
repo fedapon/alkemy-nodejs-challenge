@@ -10,7 +10,15 @@ class charactersService {
     }
 
     async getCharacterById(id) {
-        return await Character.findByPk(id, {include: Movie})
+        return await Character.findByPk(id, {
+            include: {
+                model: Movie,
+                as: 'movies',
+                through: {
+                    attributes: []
+                }
+            }
+        })
     }
 
     async createCharacter(object) {
