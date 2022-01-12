@@ -2,8 +2,11 @@ import Character from '../models/character.model.js'
 import Movie from '../models/movie.model.js'
 
 class charactersService {
-    async getAllCharacters() {
-        return await Character.findAll()
+    async getAllCharacters(query) {
+        return await Character.findAll({
+            where: query,
+            attributes: ['picture', 'name']
+        })
     }
 
     async getCharacterById(id) {

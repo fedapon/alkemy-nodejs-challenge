@@ -3,7 +3,7 @@ import charactersService from '../services/characters.service.js'
 const db = new charactersService()
 
 export async function getAllCharacters(req, res) {
-    res.json(await db.getAllCharacters())
+    res.json(await db.getAllCharacters(req.query))
 }
 
 export async function getCharacter(req, res) {
