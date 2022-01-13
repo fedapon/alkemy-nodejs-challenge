@@ -57,8 +57,8 @@ async function generateToken(object) {
     return new Promise(function (resolve, reject) {
         jwt.sign(
             object,
-            process.env.SECRET,
-            { expiresIn: '1d' },
+            process.env.JWT_SECRET,
+            { expiresIn: process.env.JWT_EXPIRES_IN },
             (error, token) => {
                 if (error) {
                     reject(error)
