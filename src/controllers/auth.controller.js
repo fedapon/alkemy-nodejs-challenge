@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
 import User from '../models/user.model.js'
 
 export async function authLogin(req, res) {
@@ -13,7 +12,7 @@ export async function authLogin(req, res) {
         if (!userToValidate) {
             return res.status(404).json({ error: 'username has not be found' })
         }
-        if (await bcrypt.compare(password, userToValidate.password)) {
+        if (await userToValidate.comparePassword(password)) {
             const token = await generateToken({
                 id: userToValidate.id,
                 username: userToValidate.username
@@ -34,12 +33,11 @@ export async function authRegister(req, res) {
             .json({ error: 'username and password are mandatory' })
     }
     try {
-        const password = await bcrypt.hash(req.body.password, 10)
         let user = {}
         try {
             user = await User.create({
                 username: req.body.username,
-                password: password
+                password: req.body.password
             })
         } catch (error) {
             return res.json({ error: error.errors[0].message })
