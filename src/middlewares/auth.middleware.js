@@ -21,7 +21,7 @@ async function authMiddleware(req, res, next) {
 
 async function verifyJwt(token) {
     return new Promise(function (resolve, reject) {
-        jwt.verify(token, process.env.SECRET, (error, authData) => {
+        jwt.verify(token, process.env.JWT_SECRET, (error, authData) => {
             if (error) {
                 reject(error)
             }
