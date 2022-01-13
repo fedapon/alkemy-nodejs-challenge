@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import db from '../config/database.js'
+import bcrypt from 'bcrypt'
 
 const User = db.define(
     'User',
@@ -21,7 +22,16 @@ const User = db.define(
     },
     {
         // Other model options go here
+        hooks: {
+            beforeCreate: async function (user) {
+                user.password = await bcrypt.hash(user.password, 10)
+            }
+        }
     }
 )
+
+User.prototype.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password)
+}
 
 export default User
