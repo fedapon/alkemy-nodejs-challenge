@@ -3,24 +3,13 @@ module.exports = {
         es2021: true,
         node: true
     },
-    extends: ['plugin:prettier/recommended'],
+    extends: ['prettier'],
     parserOptions: {
         ecmaVersion: 12,
         sourceType: 'module'
     },
     plugins: ['prettier'],
     rules: {
-        'prettier/prettier': [
-            'error',
-            {
-                trailingComma: 'none',
-                tabWidth: 4,
-                useTabs: false,
-                semi: false,
-                singleQuote: true,
-                arrowParens: 'always',
-                endOfLine: 'auto'
-            }
-        ]
+        'prettier/prettier': 'error'
     }
 }
