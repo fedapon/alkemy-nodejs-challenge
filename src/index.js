@@ -11,7 +11,7 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT | 3000
 
-databaseConfiguration(db, { mockdata: true })
+databaseConfiguration(db, { mockdata: process.env.MOCKDATA })
 
 //middlewares
 app.use(cors())
