@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { authMiddleware } from '../middlewares/auth.middleware.js'
 import {
     getAllMovies,
     getMovie,
@@ -9,14 +10,14 @@ import {
 
 const router = Router()
 
-router.get('/', getAllMovies)
+router.get('/', authMiddleware, getAllMovies)
 
-router.get('/:id', getMovie)
+router.get('/:id', authMiddleware, getMovie)
 
-router.post('/', createMovie)
+router.post('/', authMiddleware, createMovie)
 
-router.patch('/:id', editMovie)
+router.patch('/:id', authMiddleware, editMovie)
 
-router.delete('/:id', deleteMovie)
+router.delete('/:id', authMiddleware, deleteMovie)
 
 export default router
