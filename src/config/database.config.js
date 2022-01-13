@@ -1,6 +1,7 @@
 import Character from '../models/character.model.js'
 import Movie from '../models/movie.model.js'
 import Genre from '../models/genre.model.js'
+import User from '../models/user.model.js'
 
 async function databaseConfiguration(db, options = {}) {
     try {
@@ -28,6 +29,7 @@ async function databaseConfiguration(db, options = {}) {
 
 async function mockData(db) {
     await db.sync({ force: true })
+    await User.create({ username: 'fedapon@gmail.com', password: 'password' })
     const char1 = await Character.create({ name: 'Mickey' })
     const char2 = await Character.create({ name: 'Minie' })
     const char3 = await Character.create({ name: 'Donald' })
