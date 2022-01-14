@@ -16,7 +16,7 @@ async function databaseConfiguration(db, options = {}) {
         })
         Movie.belongsTo(Genre, { foreignKey: 'genre' })
 
-        if (options.mockdata == true) {
+        if (options.mockdata === 'true') {
             mockData(db)
         } else {
             db.sync()
