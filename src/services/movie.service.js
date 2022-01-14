@@ -3,19 +3,20 @@ import Movie from '../models/movie.model.js'
 
 class moviesService {
     async getAllMovies(query) {
+        const { title, genre, order } = query
         let queryToFind = {}
         let titleOrder = []
-        if (query.hasOwnProperty('title')) {
-            queryToFind.title = query.title
+        if (title) {
+            queryToFind.title = title
         }
-        if (query.hasOwnProperty('genre')) {
-            queryToFind.genre = query.genre
+        if (genre) {
+            queryToFind.genre = genre
         }
-        if (query.hasOwnProperty('order')) {
-            if (query.order === 'DESC') {
-                titleOrder.push(['createdAt', 'DESC'])
-            } else {
+        if (order) {
+            if (query.order === 'ASC') {
                 titleOrder.push(['createdAt', 'ASC'])
+            } else {
+                titleOrder.push(['createdAt', 'DESC'])
             }
         }
         return await Movie.findAll({
