@@ -12,7 +12,11 @@ const Movie = db.define(
             allowNull: false
         },
         calification: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            validate: {
+                min: 1,
+                max: 5
+            }
         }
     },
     {
