@@ -23,7 +23,14 @@ export async function authLogin(req, res) {
                 id: userToValidate.id,
                 username: userToValidate.username
             })
-            return res.json({ token })
+            return res.status(200).json({
+                message: 'successfully logged in',
+                user: {
+                    id: userToValidate.id,
+                    username: userToValidate.username
+                },
+                token
+            })
         } else {
             return res.status(401).json({ error: 'password is not correct' })
         }
@@ -62,7 +69,11 @@ export async function authRegister(req, res) {
             id: user.id,
             username: user.username
         })
-        return res.status(201).json({ token })
+        return res.status(201).json({
+            message: 'successfully registered',
+            user: { id: user.id, username: user.username },
+            token
+        })
     } catch (error) {
         return res.status(500).json({ error: error })
     }
