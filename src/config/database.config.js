@@ -30,9 +30,9 @@ async function databaseConfiguration(db, options = {}) {
 async function mockData(db) {
     await db.sync({ force: true })
     await User.create({ username: 'fedapon@gmail.com', password: 'password' })
-    const char1 = await Character.create({ name: 'Mickey' })
-    const char2 = await Character.create({ name: 'Minie' })
-    const char3 = await Character.create({ name: 'Donald' })
+    const char1 = await Character.create({ name: 'Mickey', age: 30 })
+    const char2 = await Character.create({ name: 'Minie', age: 40 })
+    const char3 = await Character.create({ name: 'Donald', age: 50 })
     const movie1 = await Movie.create({ title: 'Tiburon' })
     const movie2 = await Movie.create({ title: 'Matrix' })
     const movie3 = await Movie.create({ title: 'Back to the future' })
