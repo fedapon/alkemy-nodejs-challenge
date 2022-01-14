@@ -11,6 +11,16 @@
 				{
 					"name": "characters all",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -39,11 +49,93 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "characters all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/characters",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"characters"
+									],
+									"query": [
+										{
+											"key": "Key",
+											"value": "Value",
+											"description": "Description",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"78-/dOFLeurmqNn+eJ3slAtVyYbBaQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 17:39:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"picture\": null,\n        \"name\": \"Mickey\"\n    },\n    {\n        \"id\": 2,\n        \"picture\": null,\n        \"name\": \"Minie\"\n    },\n    {\n        \"id\": 3,\n        \"picture\": null,\n        \"name\": \"Donald\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "characters filter",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -64,22 +156,181 @@
 							],
 							"query": [
 								{
+									"key": "name",
+									"value": "Mickey"
+								},
+								{
 									"key": "age",
 									"value": "50",
 									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "Mickey"
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "characters filter by name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/characters?name=Mickey",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"characters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Mickey"
+										},
+										{
+											"key": "age",
+											"value": "50",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-ItQxyv3d/+wFGiRN90ko7YxBwGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 17:40:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"picture\": null,\n        \"name\": \"Mickey\"\n    }\n]"
+						},
+						{
+							"name": "characters filter by age",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/characters?age=50",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"characters"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Mickey",
+											"disabled": true
+										},
+										{
+											"key": "age",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-2GUAWSIMDrLfJ3kvFyBpyHP1zn8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:49:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"picture\": null,\n        \"name\": \"Donald\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "characters by Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -95,11 +346,80 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "characters by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/characters/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"characters",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "467"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d3-Y1PS7Aw1q7uYHlJa1JeNg5VY3J0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 17:41:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"picture\": null,\n    \"name\": \"Mickey\",\n    \"age\": null,\n    \"weigth\": null,\n    \"history\": null,\n    \"createdAt\": \"2022-01-13T19:10:18.957Z\",\n    \"updatedAt\": \"2022-01-13T19:10:18.957Z\",\n    \"movies\": [\n        {\n            \"id\": 1,\n            \"picture\": null,\n            \"title\": \"Tiburon\",\n            \"calification\": null,\n            \"createdAt\": \"2022-01-13T19:10:19.259Z\",\n            \"updatedAt\": \"2022-01-13T19:10:21.870Z\",\n            \"genre\": 1\n        },\n        {\n            \"id\": 2,\n            \"picture\": null,\n            \"title\": \"Matrix\",\n            \"calification\": null,\n            \"createdAt\": \"2022-01-13T19:10:19.716Z\",\n            \"updatedAt\": \"2022-01-13T19:10:22.062Z\",\n            \"genre\": 2\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "characters",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -110,7 +430,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"New Character\",\r\n    \"age\": 50\r\n}"
+							"raw": "{\r\n    \"picture\": \"\",\r\n    \"name\": \"Spiderman\",\r\n    \"age\": \"\",\r\n    \"weigth\": \"\",\r\n    \"history\": \"\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/characters",
@@ -124,11 +444,94 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "characters",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Spiderman\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/characters",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"characters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"69-mx923BsHwpPtLPOpIEpqMiLuQmw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 17:55:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Spiderman\",\n    \"updatedAt\": \"2022-01-14T17:55:10.087Z\",\n    \"createdAt\": \"2022-01-14T17:55:10.087Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "characters",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [
 							{
@@ -139,7 +542,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"New Character Name\",\r\n    \"age\": \"30\"\r\n}"
+							"raw": "{\r\n    \"picture\": \"\",\r\n    \"name\": \"New Character Name\",\r\n    \"age\": \"\",\r\n    \"weigth\": \"\",\r\n    \"history\": \"\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/characters/1",
@@ -154,11 +557,90 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "characters",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"picture\": \"\",\r\n    \"name\": \"New Character Name\",\r\n    \"age\": \"\",\r\n    \"weigth\": \"\",\r\n    \"history\": \"\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/characters/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"characters",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "161"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a1-HkdN7WknifNLjqwVqxzsXNqNhfs\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:37:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"picture\": \"\",\n    \"name\": \"New Character Name\",\n    \"age\": \"\",\n    \"weigth\": \"\",\n    \"history\": \"\",\n    \"createdAt\": \"2022-01-14T18:35:12.070Z\",\n    \"updatedAt\": \"2022-01-14T18:37:34.936Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "characters",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -174,7 +656,66 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "characters",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/characters/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"characters",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-FZWmoeoKlEkaopBhvfZzbp9ju1A\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:06:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"character deleted\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -184,6 +725,16 @@
 				{
 					"name": "movies all",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -213,11 +764,94 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "movies all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Key",
+										"value": "Value",
+										"description": "Description",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-wzjWAyH9NUmZX07jwQph2fm83rM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 12:58:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"picture\": null,\n        \"title\": \"Tiburon\",\n        \"createdAt\": \"2022-01-13T19:10:19.259Z\"\n    },\n    {\n        \"id\": 2,\n        \"picture\": null,\n        \"title\": \"Matrix\",\n        \"createdAt\": \"2022-01-13T19:10:19.716Z\"\n    },\n    {\n        \"id\": 3,\n        \"picture\": null,\n        \"title\": \"Back to the future\",\n        \"createdAt\": \"2022-01-13T19:10:19.932Z\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "movies filter",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -261,11 +895,280 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "movies filter by name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Key",
+										"value": "Value",
+										"description": "Description",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/movies?title=Tiburon",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Tiburon"
+										},
+										{
+											"key": "genre",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "ASC",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "DESC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-hN7vPmPZ9qoXz0th7/ruWLbh2MY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:07:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"picture\": null,\n        \"title\": \"Tiburon\",\n        \"createdAt\": \"2022-01-14T18:06:01.504Z\"\n    }\n]"
+						},
+						{
+							"name": "movies filter by genre",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Key",
+										"value": "Value",
+										"description": "Description",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/movies?genre=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Tiburon",
+											"disabled": true
+										},
+										{
+											"key": "genre",
+											"value": "1"
+										},
+										{
+											"key": "order",
+											"value": "ASC",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "DESC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "174"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ae-WAOpHXg16CrI0RnKv21J5ygUjwE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:08:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"picture\": null,\n        \"title\": \"Tiburon\",\n        \"createdAt\": \"2022-01-14T18:06:01.504Z\"\n    },\n    {\n        \"id\": 3,\n        \"picture\": null,\n        \"title\": \"Back to the future\",\n        \"createdAt\": \"2022-01-14T18:06:02.277Z\"\n    }\n]"
+						},
+						{
+							"name": "movies filter and ordering",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Key",
+										"value": "Value",
+										"description": "Description",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/movies?order=ASC",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "Tiburon",
+											"disabled": true
+										},
+										{
+											"key": "genre",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "order",
+											"value": "ASC"
+										},
+										{
+											"key": "order",
+											"value": "DESC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fe-x2IU6KvTVPYVCGt7WxgowdxEcFo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:08:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"picture\": null,\n        \"title\": \"Tiburon\",\n        \"createdAt\": \"2022-01-14T18:06:01.504Z\"\n    },\n    {\n        \"id\": 2,\n        \"picture\": null,\n        \"title\": \"Matrix\",\n        \"createdAt\": \"2022-01-14T18:06:01.627Z\"\n    },\n    {\n        \"id\": 3,\n        \"picture\": null,\n        \"title\": \"Back to the future\",\n        \"createdAt\": \"2022-01-14T18:06:02.277Z\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "movies by Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -295,11 +1198,94 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "movies by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Transfer-Encoding",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/movies/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1df-eZZVJ28KS3TJ5q9iNnm6FOqkF2Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:12:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"picture\": null,\n    \"title\": \"Tiburon\",\n    \"calification\": null,\n    \"createdAt\": \"2022-01-14T18:11:21.395Z\",\n    \"updatedAt\": \"2022-01-14T18:11:22.230Z\",\n    \"genre\": 1,\n    \"characters\": [\n        {\n            \"id\": 1,\n            \"picture\": null,\n            \"name\": \"Mickey\",\n            \"age\": null,\n            \"weigth\": null,\n            \"history\": null,\n            \"createdAt\": \"2022-01-14T18:11:21.068Z\",\n            \"updatedAt\": \"2022-01-14T18:11:21.068Z\"\n        },\n        {\n            \"id\": 2,\n            \"picture\": null,\n            \"name\": \"Minie\",\n            \"age\": null,\n            \"weigth\": null,\n            \"history\": null,\n            \"createdAt\": \"2022-01-14T18:11:21.149Z\",\n            \"updatedAt\": \"2022-01-14T18:11:21.149Z\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "movies",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -310,7 +1296,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"picture\": \"http://store.com/image.jpg\",\r\n    \"title\": \"Movie Name\"\r\n}"
+							"raw": "{\r\n    \"picture\": \"http://store.com/image.jpg\",\r\n    \"title\": \"Movie Name\",\r\n    \"calification\": 5\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/movies",
@@ -331,11 +1317,96 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "movies",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"picture\": \"http://store.com/image.jpg\",\r\n    \"title\": \"Movie Name\",\r\n    \"calification\": 5\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "163"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a3-vzc77jIXmHvQDxJkjzpqkmxwrU0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:11:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"picture\": \"http://store.com/image.jpg\",\n    \"title\": \"Movie Name\",\n    \"calification\": 5,\n    \"updatedAt\": \"2022-01-14T18:11:39.038Z\",\n    \"createdAt\": \"2022-01-14T18:11:39.038Z\"\n}"
+						}
+					]
 				},
 				{
 					"name": "movies",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [
 							{
@@ -346,7 +1417,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"picture\": \"http://store.com/image.jpg\",\r\n    \"title\": \"New Movie Name\"\r\n}"
+							"raw": "{\r\n    \"picture\": \"http://store.com/image.jpg\",\r\n    \"title\": \"New Movie Name\",\r\n    \"calification\": 5\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/movies/1",
@@ -368,11 +1439,97 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "movies",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"picture\": \"http://store.com/image.jpg\",\r\n    \"title\": \"New Movie Name\",\r\n    \"calification\": 5\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/movies/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "177"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b1-ek1OGjMGbejAzixLkYlP0/fKHZw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:24:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"picture\": \"http://store.com/image.jpg\",\n    \"title\": \"New Movie Name\",\n    \"calification\": 5,\n    \"createdAt\": \"2022-01-14T18:24:15.705Z\",\n    \"updatedAt\": \"2022-01-14T18:24:18.571Z\",\n    \"genre\": 1\n}"
+						}
+					]
 				},
 				{
 					"name": "movies",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{my_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -402,7 +1559,80 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "movies",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Transfer-Encoding",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/movies/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"movies",
+										"1"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b-2qmOXk0MdLOip4micg3YuxT1D6c\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:25:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"movie deleted\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -420,6 +1650,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"fedapon@gmail.com\",\r\n    \"password\": \"password\"\r\n}"
+						},
 						"url": {
 							"raw": "http://localhost:3000/auth/register",
 							"protocol": "http",
@@ -433,7 +1667,175 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "auth/register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"fedapon@gmail.com\",\r\n    \"password\": \"password\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-FKCGuN+QIIyNmXu97zPcODBFt7k\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:43:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"successfully registered\",\n    \"user\": {\n        \"id\": 2,\n        \"username\": \"fedapon@gmail.com\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmZWRhcG9uQGdtYWlsLmNvbSIsImlhdCI6MTY0MjE4NTc5NywiZXhwIjoxNjQyMjcyMTk3fQ.cmp8W413-mo7Ji-mVnq-3ei9zHCOyEO1KaN8pAWLuJc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "auth/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"fedapon@gmail.com\",\r\n    \"password\": \"password\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "auth/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"fedapon@gmail.com\",\r\n    \"password\": \"password\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "273"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"111-Wosz/i1RWLV1LVjqmefcWTVoZ0k\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 14 Jan 2022 18:45:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"successfully logged in\",\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"fedapon@gmail.com\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJmZWRhcG9uQGdtYWlsLmNvbSIsImlhdCI6MTY0MjE4NTkzNywiZXhwIjoxNjQyMjcyMzM3fQ.oIYLTebZTo_qVcIWEExPfVeHf9wa0hZ4eqLnDbXPP0w\"\n}"
+						}
+					]
 				}
 			]
 		}
