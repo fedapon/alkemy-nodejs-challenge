@@ -4,6 +4,11 @@ import mailService from '../services/mail.service.js'
 
 export async function authLogin(req, res) {
     const { username, password } = req.body
+    if (!username | !password) {
+        return res
+            .status(400)
+            .json({ error: 'username and password are mandatory' })
+    }
     try {
         const userToValidate = await User.findOne({
             where: {
@@ -28,7 +33,8 @@ export async function authLogin(req, res) {
 }
 
 export async function authRegister(req, res) {
-    if (!req.body.username | !req.body.password) {
+    const { username, password } = req.body
+    if (!username | !password) {
         return res
             .status(400)
             .json({ error: 'username and password are mandatory' })
@@ -37,8 +43,8 @@ export async function authRegister(req, res) {
         let user = {}
         try {
             user = await User.create({
-                username: req.body.username,
-                password: req.body.password
+                username,
+                password
             })
         } catch (error) {
             return res.json({ error: error.errors[0].message })
