@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/user.model.js'
+import mailService from '../services/mail.service.js'
 
 export async function authLogin(req, res) {
     const { username, password } = req.body
@@ -42,6 +43,14 @@ export async function authRegister(req, res) {
         } catch (error) {
             return res.json({ error: error.errors[0].message })
         }
+
+        let mail = new mailService(
+            user.username,
+            'Welcome',
+            `Welcome ${user.username} to Alkemy API challenge`,
+            `<h2>Welcome ${user.username} to Alkemy API challenge</h2>`
+        )
+        mail.sendMail().catch()
 
         const token = await generateToken({
             id: user.id,
