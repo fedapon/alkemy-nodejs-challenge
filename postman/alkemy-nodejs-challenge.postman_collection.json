@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "7a91c9ab-177f-49ef-87a7-d9a9a6cd9c60",
 		"name": "alkemy-nodejs-challenge",
+		"description": "Full description available on:\n\n[https://github.com/fedapon/alkemy-nodejs-challenge](https://github.com/fedapon/alkemy-nodejs-challenge)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
