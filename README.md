@@ -115,3 +115,16 @@ De forma *opcional*, se podrán agregar tests de los diferentes endpoints de la 
 - Acceso a recursos inexistentes en endpoints de detalle
 
 Los tests pueden realizarse utilizando Mocha + Chai.
+
+## To install and try
+
+```
+git clone https://github.com/fedapon/alkemy-nodejs-challenge.git
+
+cd alkemy-nodejs-challenge
+
+npm install
+
+npm run start
+```
+
