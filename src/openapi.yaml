@@ -1,0 +1,303 @@
+openapi: 3.0.1
+info:
+  title: alkemy-nodejs-challenge
+  description: >-
+    API REST developed with Node.Js
+  version: 1.0.0
+servers:
+  - url: /
+    description: ''
+tags:
+  - name: Auth
+    description: ''
+  - name: Characters
+    description: ''
+  - name: Movies
+    description: ''
+
+paths:
+  /auth/register:
+    post:
+      tags: 
+        - Auth
+      summary: Register a new user to the resource
+      requestBody:
+        description: Register a new user to the resource
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: example@gmail.com
+                password:
+                  type: string
+                  example: password
+      responses:
+        '201':
+          description: New character created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully registered
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      username:
+                        type: string
+                        example: example@gmail.com
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmZWRhcG9uQGdtYWlsLmNvbSIsImlhdCI6MTY0MjE4NTc5NywiZXhwIjoxNjQyMjcyMTk3fQ.cmp8W413-mo7Ji-mVnq-3ei9zHCOyEO1KaN8pAWLuJc
+  /auth/login:
+    post:
+      tags: 
+        - Auth
+      summary: User login to get a new token
+      requestBody:
+        description: Username and password
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: example@gmail.com
+                password:
+                  type: string
+                  example: password
+      responses:
+        '200':
+          description: Successfully logged in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: successfully logged in
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      username:
+                        type: string
+                        example: example@gmail.com
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmZWRhcG9uQGdtYWlsLmNvbSIsImlhdCI6MTY0MjE4NTc5NywiZXhwIjoxNjQyMjcyMTk3fQ.cmp8W413-mo7Ji-mVnq-3ei9zHCOyEO1KaN8pAWLuJc
+      
+  /characters:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Characters
+      summary: Get all characters
+      parameters:
+        - in: query
+          name: name
+          required: false
+          description: Filter by name
+          schema:
+            type: string
+        - in: query
+          name: age
+          required: false
+          description: Filter by age
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: All characters than match the optional filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Characters
+      summary: Create a new character
+      requestBody:
+        description: Create a new character. Only **name** is mandatory
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character'
+      responses:
+        '201':
+          description: New character created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+                  
+  /characters/{id}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Characters
+      summary: Get character by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id number of the character
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: All available data about the character
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Character'
+    patch:
+      security:
+        - bearerAuth: []
+      tags:
+        - Characters
+      summary: Update a character
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id number of the character
+          schema:
+            type: integer
+      requestBody:
+        description: Character object to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character'
+      responses:
+        '200':
+          description: Character updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - Characters
+      summary: Delete a character
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id number of the character
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Character updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: character deleted
+
+components:
+  securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  schemas:
+    Character:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Mickey
+        age:
+          type: integer
+          example: 30
+        weigth:
+          type: number
+          example: 30
+        history:
+          type: string
+          example: The litle history of the character
+        movies:
+          type: array
+          items: 
+            $ref: '#/components/schemas/Movie'
+          
+    Movie:
+      required:
+        - title
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: The Big Movie
+        calification:
+          type: string
+          example: 5
+        characters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Character'
+        genre:
+          type: integer
+          example: 1
+          items:
+            $ref: '#/components/schemas/Genre'
+             
+    Genre:
+      required:
+        - title
+      type: object
+      properties:
+        name:
+          type: integer
+          example: Family
+        picture:
+          type: string
+    
+    User:
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string

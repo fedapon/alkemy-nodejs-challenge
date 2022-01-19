@@ -6,6 +6,7 @@ import databaseConfiguration from './config/database.config.js'
 import authRoute from './routes/auth.route.js'
 import charactersRoute from './routes/characters.route.js'
 import moviesRoute from './routes/movies.route.js'
+import swaggerRoute from './routes/swagger.route.js'
 
 dotenv.config()
 const app = express()
@@ -18,11 +19,11 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+//endpoints
 app.use('/auth', authRoute)
-
 app.use('/characters', charactersRoute)
-
 app.use('/movies', moviesRoute)
+app.use('/docs', swaggerRoute)
 
 app.listen(PORT, function () {
     console.log(`Server started on port ${PORT}`)
