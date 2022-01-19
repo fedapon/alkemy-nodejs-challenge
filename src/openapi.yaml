@@ -223,6 +223,142 @@ paths:
                   message:
                     type: string
                     example: character deleted
+  /movies:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Movies
+      summary: Get all movies
+      parameters:
+        - in: query
+          name: title
+          required: false
+          description: Filter by title
+          schema:
+            type: string
+        - in: query
+          name: calification
+          required: false
+          description: Filter by calification
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: All movies than match the optional filter
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Movies
+      summary: Create a new movie
+      requestBody:
+        description: Create a new movie. Only **title** is mandatory
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: New Movie Name
+                calification:
+                  type: integer
+                  example: 5
+      responses:
+        '201':
+          description: New movie created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+                  
+  /movies/{id}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Movies
+      summary: Get movie by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id number of the movie
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: All available data about the movie
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Movie'
+    patch:
+      security:
+        - bearerAuth: []
+      tags:
+        - Movies
+      summary: Update a movie
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id number of the movie
+          schema:
+            type: integer
+      requestBody:
+        description: Movie object to update
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: The New Name of the Movie
+                calification:
+                  type: integer
+                  example: 4
+      responses:
+        '200':
+          description: Movier updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - Movies
+      summary: Delete a movie
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id number of the movie
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Movie updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: movie deleted
 
 components:
   securitySchemes:

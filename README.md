@@ -116,7 +116,7 @@ De forma *opcional*, se podrán agregar tests de los diferentes endpoints de la 
 
 Los tests pueden realizarse utilizando Mocha + Chai.
 
-## To install and try
+## Instalación
 
 ```
 git clone https://github.com/fedapon/alkemy-nodejs-challenge.git
@@ -128,3 +128,6 @@ npm install
 npm run start
 ```
 
+La documentación del challenge está disponible a utilizando swagger a traves del endpoint:
+
+- /docs
